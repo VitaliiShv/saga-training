@@ -1,25 +1,12 @@
-import { useSelector, useDispatch } from "react-redux";
-import { increaseCount, decreaseCount } from "./redux/actions/actionCreator";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 
-const App = () => {
-  const count = useSelector((store) => store.counter.count);
-  // console.log(store);
-
-  const dispatch = useDispatch();
-
-  const handleIncrease = () => {
-    dispatch(increaseCount());
-  };
-
-  const handleDecrease = () => {
-    dispatch(decreaseCount());
-  };
-
+const App = ({ children }) => {
   return (
     <>
-      <button onClick={handleIncrease}>+1</button>
-      <button onClick={handleDecrease}>-1</button>
-      <h1>{count}</h1>
+      <Header></Header>
+      <main>{children}</main>
+      <Footer></Footer>
     </>
   );
 };
