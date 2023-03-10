@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { GET_POPULAR_NEWS } from "../../../redux/constants";
 import News from "../../News/News";
 
 const PopularNewsPage = () => {
@@ -7,9 +8,12 @@ const PopularNewsPage = () => {
   const { popularNewsError } = useSelector((store) => store?.errors || {});
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch({ type: GET_POPULAR_NEWS });
+  }, [dispatch]);
+
   return (
     <div>
-      <button onClick={handleNews}>Get News</button>
       <News news={popularNews} error={popularNewsError} title="Popular News" />
     </div>
   );

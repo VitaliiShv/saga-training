@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { GET_LATEST_NEWS } from "../../../redux/constants";
 import News from "../../News/News";
 
 const LatestNewsPage = () => {
@@ -7,9 +8,12 @@ const LatestNewsPage = () => {
   const { latestNewsError } = useSelector((store) => store?.errors || {});
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch({ type: GET_LATEST_NEWS });
+  }, [dispatch]);
+
   return (
     <div>
-      <button onClick={handleNews}>Get News</button>
       <News news={latestNews} error={latestNewsError} title="Latest News" />
     </div>
   );

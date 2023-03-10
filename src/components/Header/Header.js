@@ -26,7 +26,7 @@ const Header = () => {
       <nav className={css.nav}>
         <div className={css.links}>
           {navigation.map(({ id, title, path }) => (
-            <NavLink key={id} to={path} extract={true}>
+            <NavLink key={id} to={path}>
               {title}
             </NavLink>
           ))}
